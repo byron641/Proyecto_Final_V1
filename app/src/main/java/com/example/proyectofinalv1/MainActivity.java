@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 if (weatherResponse != null) {
                     String content = "";
                     content += "La Temperatura es: " + weatherResponse.getMain().getTemp() + "\n";
-                    content += "El dia de hoy el clima es: " + weatherResponse.getWeather().get(0).getDescription() + "\n";
+                    content += "El clima de hoy es: " + weatherResponse.getWeather().get(0).getDescription() + "\n";
 
                     textViewResult.setText(content);
                 }
