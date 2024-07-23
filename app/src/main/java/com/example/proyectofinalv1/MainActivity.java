@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
+
+import java.text.DecimalFormat;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -42,8 +45,12 @@ public class MainActivity extends AppCompatActivity {
                 WeatherResponse weatherResponse = response.body();
                 if (weatherResponse != null) {
                     String content = "";
-                    content += "La Temperatura es: " + weatherResponse.getMain().getTemp() + "\n";
-                    content += "El clima de hoy es: " + weatherResponse.getWeather().get(0).getDescription() + "\n";
+                    double Temperatura = 0;
+                    Temperatura = weatherResponse.getMain().getTemp();
+                    Temperatura=Temperatura-273.15;
+                    DecimalFormat df = new DecimalFormat("#.##");
+                    content += "La Temperatura actualmente es de " + df.format(Temperatura) + " Grados" + "\n";
+                    content += "El clima de hoy es " + weatherResponse.getWeather().get(0).getDescription() + "\n";
 
                     textViewResult.setText(content);
                 }
